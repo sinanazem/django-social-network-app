@@ -20,7 +20,7 @@ Welcome to Django Social Network, a powerful and customizable social networking 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/django-social-network.git
+   git clone https://github.com/sinanazem/django-social-network.git
    cd django-social-network
    ```
 
