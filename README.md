@@ -1,5 +1,5 @@
 # Django Social Network
-
+<img src="https://www.programmingassignment.net/wp-content/uploads/2022/09/social-network-app.png"><br>
 ## Introduction
 
 Welcome to Django Social Network, a powerful and customizable social networking platform built using the Django web framework. This project aims to provide a foundation for creating feature-rich social networking websites with ease.
