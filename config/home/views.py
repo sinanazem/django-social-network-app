@@ -1,16 +1,15 @@
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth.models import User
+from .models import PostModel
 # Create your views here.
 # def home(requests):
 #     return render(requests, 'home/index.html')
 
 class HomeView(View):
     def get(self, requests):
-        return render(requests, 'home/index.html')
-    
-    def post(self, requests):
-        pass
+        posts = PostModel.objects.all()
+        return render(requests, 'home/index.html', {'posts':posts})
     
 class CommunityView(View):
     def get(self, requests):
