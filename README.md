@@ -68,10 +68,3 @@ We welcome contributions! If you find any issues or have suggestions for improve
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- This project was inspired by the need for a flexible and extensible social networking platform.
-- Special thanks to the Django community for their continuous support and contributions.
-
-Enjoy building your social network with Django Social Network! If you have any questions or need assistance, feel free to reach out.
