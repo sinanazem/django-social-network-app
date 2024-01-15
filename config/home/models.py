@@ -6,7 +6,7 @@ class PostModel(models.Model):
     slug = models.CharField(max_length=150)
     body = models.TextField()
     created = models.DateTimeField()
-    updated = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField()
     
     def __str__(self) -> str:
         return self.slug + " " + user
