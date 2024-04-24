@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+        <h1> {{post.title}} </h1>
+        <small> {{post.date_posted}} </small>
+        <p> {{post.content}} </p>
+        
+        <small> 
+            Author: <a href="{% url 'account:user_profile' post.user.id %}"> {{post.user}} </a>
+             
+        </small>
+
+        {% if request.user.id == post.user.id %}
+        
+        <br>
+        <br>
+        <a href="{% url 'home:post_delete' post.id %}" class="btn btn-danger" > Delete </a>
+        <a href="{% url 'home:post_update' post.id %}" class="btn btn-warning" > Update </a>
+
+        {% endif %}
+
+        <hr>
+
+
+        {% if request.user.is_authenticated %}
+
+            <a href="{% url 'home:post_like' post.id %}" class="{% if user_can_like %} disabled {% endif %} btn btn-primary col-md-2"> Like {{post.like_count}} </a>
+
+            <form action="" method="post" novalidate>
+
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Send">
+
+            </form>
+
+        {% else %}
+            
+            <p class="alert alert-danger">
+                You Not Logged in So You Cant Comment On This Post.
+            </p>
+
+        {% endif %}
+
+
+
+        {% for comment in comments %}
+
+            <div class="card bg-dark text-white">
+
+                <p class="card-header">
+                    {{comment.user}} | {{comment.created | timesince}} ago
+                </p>
+
+                <p class="card-body">
+                    {{comment.body}}
+                </p>
+
+            {% if request.user.is_authenticated %}
+
+
+                <form action="{% url 'home:post_reply' post.id comment.id %}" method="post" novalidate>
+
+                    {% csrf_token %}
+                    {{reply_form.as_p}}
+                    <input type="submit" value="Send">
+
+                </form>
+
+            {% endif %}
+
+            {% for reply in comment.rcomment.all %}
+
+                <p class="bg-primary p-3 m-2">
+                    {{reply.user}} | {{reply.body}}
+                </p>
+
+            {% endfor %}
+
+            </div>
+
+            {% empty %}
+                <p>
+                    No Comments Yet! Be the first to comment on this Post.
+                </p>
+
+
+
+        {% endfor %}
+
+        
+        
+
+{% endblock %}

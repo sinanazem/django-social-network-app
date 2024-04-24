@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>
+        Home Pages...
+    </h1><br/>
+
+        <form action="" method="get">
+
+            {{form.as_p}}
+            <input type="submit" value="Search">
+
+        </form><br/>
+
+        {% for post in posts %}
+
+         <p>
+            
+            <a href="{{ post.get_absolute_url }}"> {{post.title}} </a>
+
+            <p>
+                {{post.content}}
+            </p>
+
+         </p><hr>
+
+        {% endfor %}
+
+
+{% endblock %}
